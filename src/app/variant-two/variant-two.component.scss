@@ -1,0 +1,26 @@
+button {
+  margin-bottom: 50px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin-bottom: 25px;
+
+    label,
+    span {
+      margin-left: 25px;
+    }
+  }
+}
+
+.check {
+  margin: 50px 0;
+}
+
+select {
+  margin-left: 10px;
+}

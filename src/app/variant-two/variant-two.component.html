@@ -1,0 +1,36 @@
+<div>
+  <button>Save</button>
+
+  <div class="check">
+    <input type="checkbox" id="check" (change)="filterByShows($event.target.checked)"/>
+    <label for="check">Shows Only</label>
+  </div>
+
+  <ng-container *ngIf="data.length > 0; else elseTemplate">
+    <ul>
+      <li *ngFor="let item of data; let i = index">
+        <input type="text" [(ngModel)]="data[i].name" value={{item.name}}>
+        <!--'gender' instead of tag for product_type -->
+        <span># {{item.gender}}</span>
+        <label>{{item.created | date: 'MM/dd/yyyy hh:mm'}}</label>
+      </li>
+    </ul>
+
+    <div>
+      <label>show</label>
+
+      <select (change)="itemsToSee($event.target.value)">
+        <option *ngFor="let count of selectCount"
+          selected="currentSelectCount == value"
+          value={{count}}>{{count}}
+        </option>
+      </select>
+
+    </div>
+  </ng-container>
+
+  <ng-template #elseTemplate>
+    <p>Loading...</p>
+  </ng-template>
+
+</div>
