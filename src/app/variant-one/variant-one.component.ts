@@ -1,26 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { GetdataService } from '../services/getdata.service';
+import { User } from './../models/user';
 
 @Component({
   selector: 'app-variant-one',
   templateUrl: './variant-one.component.html',
-  styleUrls: ['./variant-one.component.scss']
+  styleUrls: ['./variant-one.component.scss'],
 })
 export class VariantOneComponent implements OnInit {
+  data: User[];
 
-  data = [];
+  constructor(private service: GetdataService) {}
 
   ngOnInit(): void {
-    let url = "https://swapi.dev/api/people/";
-
-    fetch(url)
-    .then(i => i.json())
-    .then(i => {
-      this.data = i.results;
-    })
+    this.service.getData().subscribe((i: any) => {
+      this.data = i.results as User[];
+    });
   }
 
-  save(){
+  save() {
     console.log(this.data);
   }
-
 }
